@@ -3,7 +3,6 @@ import Home from "./routes/home/home.component";
 import Navigation from './routes/navigation/navigation.component';
 import Themes from './routes/themes/themes.component';
 
-
 const Questions = ()=>{
   return(
       <h1>I am Questions</h1>
@@ -15,11 +14,10 @@ const Answers = ()=>{
   )
 }
 const App = () => {
-  const titles = ['THEMES', 'QUESTIONS', 'ANSWERS']
   return (
     <Routes>
       <Route path='/' element= {<Navigation />}>
-        <Route index element= {<Home titles ={titles}/>}/>
+        <Route index element= {<Home />}/>
         <Route path='themes' element ={<Themes/>} />
         <Route path='questions' element ={<Questions/>} />
         <Route path='answers' element ={<Answers/>} />
