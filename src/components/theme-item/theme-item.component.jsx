@@ -1,9 +1,9 @@
 import  './theme-item.styles.scss'
-const ThemeItem = ({inside})=>{
+const ThemeItem = ({inside, setLabel})=>{
     console.log("Item");
 
     const handleClick = (event) =>{
-        console.log(event.target.innerHTML)
+        setLabel(event.target.innerHTML)
     }
 
     return(

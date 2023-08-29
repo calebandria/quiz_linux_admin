@@ -9,6 +9,7 @@ import { useState,useEffect } from "react";
 const ListItems = ({title})=>{
     const [theme, setTheme] = useState([]);
     const [question, setQuestion] = useState([]);
+    const [label, setLabel] = useState("");
 
     useEffect(()=>{
         fetch('http://localhost:5000/theme/get')
@@ -29,19 +30,16 @@ const ListItems = ({title})=>{
     const itemChoice = ()=>{
         if(title ==="THEMES"){
             return(
-                 <ThemeItem inside={theme} /> 
+                <ThemeItem inside={theme} setLabel={setLabel}/> 
             )
         }
         else if(title ==="QUESTIONS"){
             return(
-                <QuestionItem inside={question}/>
+                <QuestionItem inside={question} label={label}/>
             )
         }
     
     }
-    console.log(theme)
-
-    console.log("ListItems")
     return(
         <div className="list-items">
             <div className="content">
