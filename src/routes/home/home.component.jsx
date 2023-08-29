@@ -1,28 +1,17 @@
-import ListItems from "../../components/list-items.component";
+import ListItems from "../../components/listItems/list-items.component";
 
 import './home.styles.scss'
-import { useState,useEffect } from "react";
+
+
 const Home = () =>{
 
-    const titles = ['THEMES', 'QUESTIONS', 'ANSWERS']
-    const [theme, setTheme] = useState([]);
-
-    useEffect(()=>{
-        fetch('http://localhost:5000/theme/get')
-          .then(response => response.json())
-          .then(donnees =>{
-              setTheme(donnees.data);
-          })
-    },[]);
-
+    /* const titles =["THEMES", "QUESTIONS", "ANSWERS"]; */
+    
+    console.log("Home")
     return(
         <div className="home-container">
-            {titles.map((title, index)=>{
-                return(
-                   <ListItems key={index} title ={title} className="list-item" theme={theme} />  
-                )
-               
-            })}
+            <ListItems key="1" title ="THEMES" className="list-item"/>
+            <ListItems key="2" title = "QUESTIONS" className="list-item" />
         </div>
         
     )
