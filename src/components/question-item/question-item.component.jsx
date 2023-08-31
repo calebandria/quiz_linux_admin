@@ -1,25 +1,39 @@
-import {useEffect} from 'react'
-
 import './question-item.styles.scss'
-const QuestionItem =({inside, label}) =>{
+import { useState,useEffect } from "react";
+const QuestionItem = ({title, label})=>{
+    const [question, setQuestion] = useState([]);
+    /* const handleClick = (event) =>{
+        setLabel(event.target.innerHTML);
+    }
 
-    useEffect(() => {
-        console.log(label)
-    });
-
-    /* return(inside.filter((element)=>{
-        return element.label === "Installing Linux"
-    }).map((element,index) =>{
-        return <p>{element.content}</p>
-    })
-    ) */
+ */
+    useEffect(()=>{
+        fetch('http://localhost:5000/question/get')
+            .then(response => response.json())
+            .then(donnees=>{
+                setQuestion(donnees.data);
+            })
+        },[])   
     return(
-        inside.map((element,index)=>{
-            return(
-                <p key={index}>{element.content}</p>
-            )
-        })
-    )
-}
+        <div className="list-items">
+            <div className="content">
+                <h2 className="title">{title}</h2>
+                <div className="content-list">
+                {
+                   question.filter(element=>
+                        element.label === label
+                    ).map((element, index)=>{
+                        return(
+                            <p key={index}>{element.content}</p>
+                    )})
+                }
+                
+                </div>
+            </div>
+        </div>
 
+        
+    )
+    
+}
 export default QuestionItem;
