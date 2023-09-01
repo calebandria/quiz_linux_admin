@@ -14,13 +14,13 @@ const Navigation = ()=>{
         <Fragment>
             <div className="navigation">
                <div className="nav-links-container">
-                <Link id="theme" className="nav-link" to='/themes' style={{color:active==="theme" ? "white" : "black"}} onFocus={handleFocus}>
+                <Link id="theme" className="nav-link" to='/themes' style={{color:active==="theme" ? "white" : "#1e1e1e"}} onFocus={handleFocus}>
                     THEMES
                 </Link>
-                <Link id="question" className="nav-link" to='/questions' style={{color:active==="question" ? "white" : "black"}} onFocus={handleFocus}>
+                <Link id="question" className="nav-link" to='/questions' style={{color:active==="question" ? "white" : "#1e1e1e"}} onFocus={handleFocus}>
                     QUESTIONS
                 </Link>
-                <Link id="answer" className="nav-link" to='/answers' style={{color:active==="answer" ? "white" : "black"}} onFocus={handleFocus}>
+                <Link id="answer" className="nav-link" to='/answers' style={{color:active==="answer" ? "white" : "#1e1e1e"}} onFocus={handleFocus}>
                     ANSWERS
                 </Link>
                </div>
