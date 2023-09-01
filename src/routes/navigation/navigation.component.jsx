@@ -3,23 +3,29 @@ import { Outlet, Link} from "react-router-dom";
 
 import { ReactComponent as LinuxLogo} from '../../assets/linux_logo.svg'
 import './navigation.styles.scss'
+import  {useState} from 'react'
 const Navigation = ()=>{
+    const  [active, setActive] = useState("");
+    const handleFocus = (event)=>{
+        setActive(event.target.attributes[0].nodeValue)
+    }
+
     return(
         <Fragment>
             <div className="navigation">
                <div className="nav-links-container">
-                <Link className="nav-link" to='/themes'>
+                <Link id="theme" className="nav-link" to='/themes' style={{color:active==="theme" ? "white" : "black"}} onFocus={handleFocus}>
                     THEMES
                 </Link>
-                <Link className="nav-link" to='/questions'>
+                <Link id="question" className="nav-link" to='/questions' style={{color:active==="question" ? "white" : "black"}} onFocus={handleFocus}>
                     QUESTIONS
                 </Link>
-                <Link className="nav-link" to='/answers'>
+                <Link id="answer" className="nav-link" to='/answers' style={{color:active==="answer" ? "white" : "black"}} onFocus={handleFocus}>
                     ANSWERS
                 </Link>
                </div>
                <div className="nav-links-title-home">
-                    <Link className="nav-title" to= '/'>
+                    <Link id="admin" className="nav-title" to= '/'  onFocus={handleFocus}>
                         <LinuxLogo className='logo'/>
                         LINUX QUIZ ADMIN
                 </Link>
