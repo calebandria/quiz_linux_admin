@@ -1,4 +1,6 @@
-
+.title{
+    color: #FFA629;
+}
 .themes{
     display: flex;
     flex-direction: column;
@@ -14,4 +16,13 @@
 .list-paragraph{
     background-color: #ffff;
     color: #1e1e1e;
+}
+
+.list-paragraph > ul {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    list-style: none;
+    justify-content: space-between;
+    align-items: center;
 }
