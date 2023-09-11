@@ -24,7 +24,7 @@ const ThemeItem = ({title,setLabel})=>{
                 {
                    theme.map((element,index)=>{
                     return(
-                        <p key={index} style={{backgroundColor:active===index? "#FFA629":"#757575"}} onClick={(e)=>handleClick(e,index)}>{element.label}</p>
+                        <p className='list-paragraph' key={index} style={{backgroundColor:active===index? "#FFA629":"#757575"}} onClick={(e)=>handleClick(e,index)}>{element.label}</p>
                     )}) 
                 }
                 
