@@ -1,12 +1,12 @@
 import  './theme-item.styles.scss'
-import { useState,useContext} from "react";
+import { useState, useContext} from "react";
 
 import { ThemesContext } from '../../contexts/themes.context';
 
 const ThemeItem = ({title,setLabel})=>{
     const [active,setActive] = useState(-1)
 
-    const {themes} = useContext(ThemesContext);
+    const { themes } = useContext(ThemesContext);
 
     const handleClick = (event,index) =>{
         setLabel(event.target.innerHTML);
