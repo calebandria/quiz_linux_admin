@@ -1,10 +1,12 @@
 .title{
     color: #FFA629;
 }
-
+.container{
+    position:relative;
+}
 .themes{
     display: flex;
-    flex-direction: column;
+    flex-direction:column;
     align-items: center;
 }
 
@@ -36,4 +38,12 @@
     margin: 1vh;
     cursor: pointer;
 }
-
+.overlay-visible {
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    z-index: 1;
+    background-color: rgba(30,30,30,.8);
+}
