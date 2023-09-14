@@ -12,14 +12,14 @@ const Themes = ()=>{
               <li>N°</li>
               <li>content 1</li>
               <li>
-                <Icon className='edit' sx={{color: '#1e1e1e'}}>edit</Icon>
+                <Icon onClick = {()=>{console.log("Icon")}} className='edit'  sx={{color: '#1e1e1e'} }>edit</Icon>
                 <Icon className='delete' sx={{color: '#1e1e1e'}}>delete</Icon>
               </li>
             </ul>
           </div>
         </div>
+        <Icon className='plus' sx={{color: '#FFA629' }}>add</Icon>
       </div>
-        
     )
   }
 

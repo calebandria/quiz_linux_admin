@@ -6,11 +6,15 @@ import './index.scss';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+import { ThemesProvider } from './contexts/themes.context';
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <App />
+      <ThemesProvider>
+        <App />
+      </ThemesProvider>
     </BrowserRouter>
   </React.StrictMode>
 );
