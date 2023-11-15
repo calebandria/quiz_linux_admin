@@ -14,9 +14,12 @@ export const ThemesProvider = ({ children})=>{
             .then(donnees=>{
                 setThemes(donnees.data);
             })
+            .catch(error =>{
+                console.log(`Error: ${error}`)
+            })
     },[])
 
-    const value = {themes}
+    const value = {themes, setThemes}
     return(
         <ThemesContext.Provider value={value}>{children}</ThemesContext.Provider>
     )

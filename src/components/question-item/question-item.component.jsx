@@ -13,6 +13,9 @@ const QuestionItem = ({title, label})=>{
             .then(donnees=>{
                 setQuestion(donnees.data);
             })
+            .catch(error =>{
+                console.log(`Error: ${error}`)
+            })
         },[])   
     return(
         <div className="list-items">

@@ -16,6 +16,7 @@
     background-color:#FFA629 ;
     padding: 1vw 0;
     border-radius: 5px;
+    overflow: auto;
 
     .list-paragraph{
         background-color: #ffff;
@@ -34,6 +35,21 @@
     }
 
 }
+.delete{
+    cursor: pointer;
+}
+.edit{
+    cursor:pointer;
+}
+::-webkit-scrollbar{
+    width: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #ffff; 
+    border-radius: 10px;
+}
+
 .plus {
     margin: 1vh;
     cursor: pointer;
