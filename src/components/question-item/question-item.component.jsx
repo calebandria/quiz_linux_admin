@@ -13,6 +13,7 @@ const QuestionItem = ({title, label})=>{
             .then(donnees=>{
                 setQuestion(donnees.data);
             })
+            .catch(error => console.log(error))
         },[])   
     return(
         <div className="list-items">

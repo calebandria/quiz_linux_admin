@@ -9,6 +9,7 @@ const ThemeItem = ({title,setLabel})=>{
             .then(donnees=>{
                 setTheme(donnees.data);
             })
+            .catch(error => console.log(error))
     },[])
 
     const handleClick = (event,index) =>{
