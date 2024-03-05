@@ -9,8 +9,8 @@ import { ReactComponent as FacebookLogo } from '../../assets/facebook_log.svg'
 
 
 const SignUp = () => {
-    const { register, handleSubmit, formstate: { errors } } = useForm();
-
+    const { register, handleSubmit, formState: { errors }, watch } = useForm();
+    const password = watch('password')
     const onSubmit = (data) => {
         console.log('Form submitted:', data);
     }
@@ -38,30 +38,40 @@ const SignUp = () => {
 
     return (
         <div className='sign_up'>
-            <form onSubmit={handleSubmit(onSubmit)}>
+            <form onSubmit={handleSubmit(onSubmit)} className='mail_signup'>
+                <h3>SIGN UP</h3>
                 <div>
-                    <input type="text" id="username" placeholder='Username'  {...register('username', { required: 'Username is required' })} />
-                    {errors.username && <span>{errors.username.message}</span>}
+                    <input type="text" id="firstname" placeholder='Firstname'  {...register('firstname', { required: 'Firstname is required' })} />
+                    {errors.firstname && <span><br />{errors.firstname.message}</span>}
+                </div>
+                <div>
+                    <input type="text" id="familyname" placeholder='Family name'  {...register('familyname', { required: 'Family name is required' })} />
+                    {errors.familyname && <span> <br />{errors.familyname.message}</span>}
                 </div>
                 <div>
                     <input type="email" id="email" placeholder='Email' {...register('email', { required: 'Email is required' })} />
-                    {errors.email && <span>{errors.email.message}</span>}
+                    {errors.email && <span> <br />{errors.email.message}</span>}
                 </div>
                 <div>
-                    <label for="password">Password</label>
-                    <input type="password" id="password" placeholder='Password' {...register('password', { required: 'Password is required' })} />
-                    {errors.password && <span>{errors.password.message}</span>}
+                    <input type="password" id="password" placeholder='Password' {...register('password', { required: true })} />
+                    {errors.password && <span><br /> Password required</span>}
                 </div>
                 <div>
-                    <label for="confirmPassword">Confirm Password</label>
-                    <input type="password" id="confirmPassword" placeholder='Confirm Password'  {...register('confirmPassword', { required: 'Confirm Password is required' })} />
-                    {errors.confirmPassword && <span>{errors.confirmPassword.message}</span>}
+                    <input type="password" id="confirmPassword" placeholder='Confirm Password'  {...register('confirmPassword', { required: true, validate: (value) => value === password })} />
+                    {errors.confirmPassword && (<span><br/>Password unmatched</span>)}
                 </div>
-                <button type="submit">Sign Up</button>
+                <button type="submit">CREATE AN ACCOUNT</button>
             </form>
-            <GoogleLogo className='google_logo' onClick={login_google} />
-            <FacebookLogo className='facebook_logo' onClick={login_facebook} />
-            <GithubLogo className='github_logo' onClick={login_github} />
+            <div className="oauths">
+                <p>Continue with: </p>
+                <div className="logos">
+                    <GoogleLogo className='google_logo' onClick={login_google} />
+                    <FacebookLogo className='facebook_logo' onClick={login_facebook} />
+                    <GithubLogo className='github_logo' onClick={login_github} />
+                </div>
+                
+            </div>
+            
         </div>
     )
 }
