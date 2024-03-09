@@ -9,7 +9,7 @@ import { ReactComponent as FacebookLogo } from '../../assets/facebook_log.svg'
 
 
 const SignUp = () => {
-    const { register, handleSubmit, formState: { errors }, watch } = useForm();
+    const { register, handleSubmit, formState: { errors }, watch , reset} = useForm();
 
     const password = watch('password')
 
@@ -27,10 +27,14 @@ const SignUp = () => {
               }
             }
           )
+          if(error) alert(error)
+          else alert("check your email for verification")
         }
         catch(error){
             alert(error);
         }
+
+        reset()
         
     }
 
