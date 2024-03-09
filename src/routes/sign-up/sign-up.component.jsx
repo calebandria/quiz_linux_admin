@@ -10,9 +10,28 @@ import { ReactComponent as FacebookLogo } from '../../assets/facebook_log.svg'
 
 const SignUp = () => {
     const { register, handleSubmit, formState: { errors }, watch } = useForm();
+
     const password = watch('password')
-    const onSubmit = (data) => {
-        console.log('Form submitted:', data);
+
+    const onSubmit = async (formData) => {
+        try{
+            const { dataAuth, error } = await supabase.auth.signUp(
+            {
+              email: formData.email,
+              password: formData.confirmPassword,
+              options: {
+                data: {
+                  firstname: formData.firstname,
+                  familyname: formData.familyname,
+                }
+              }
+            }
+          )
+        }
+        catch(error){
+            alert(error);
+        }
+        
     }
 
 
