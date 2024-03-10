@@ -30,6 +30,9 @@ const Navigation = ()=>{
                         LINUX QUIZ ADMIN
                 </Link>
                </div>
+               <Link id="signup" className="nav-link" to='/signup' style={{color:active==="signup" ? "white" : "#1e1e1e"}} onFocus={handleFocus}>
+                    SIGN UP
+                </Link>
                
             </div>
             <Outlet/>
