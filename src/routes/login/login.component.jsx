@@ -1,11 +1,28 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
+import { supabase } from '../../utils/supabase/supabase.utils'
 import './login.styles.scss'
+import { useNavigate } from 'react-router-dom'
 
 
 const LogIn = ()=>{
     const { register, handleSubmit, formState: { errors }, watch , reset} = useForm();
+    let navigate = useNavigate();
+    const onSubmit = async(formData) =>{
+        try {
+            const { data, error } = await supabase.auth.signInWithPassword({
+            email: formData.email,
+            password: formData.password,
+            
+            
+          })
+          if(error) throw(error)
 
+        } catch (error) {
+            alert(error)
+        }
+        
+    }
 
     return(
         <div className="login">
