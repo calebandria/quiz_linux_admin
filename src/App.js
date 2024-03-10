@@ -32,12 +32,12 @@ const App = () => {
 
   return (
     <Routes>
-      <Route path='/' element= {<Navigation />}>
-      <Route index element= {<LogIn setToken={setToken} />}/>
-        {token ?<Route path='homepage' element= {<Home />}/>:""}
-        <Route path='themes' element ={<Themes/>} />
-        <Route path='questions' element ={<Questions/>} />
-        <Route path='answers' element ={<Answers/>} />
+      <Route path='/' element= {<Navigation token={token}/>}>
+        <Route index element={token? <Home/> : <LogIn setToken={setToken} />}/>
+          {token ?<Route path='homepage' element= {<Home />}/>:""}
+          {token ?<Route path='themes' element ={<Themes/>} />:""}
+          {token ?<Route path='questions' element ={<Questions/>} />:""}
+          {token ?<Route path='answers' element ={<Answers/>} />:""}
         <Route path='signup' element={<SignUp/>}/>
       </Route>
     </Routes>

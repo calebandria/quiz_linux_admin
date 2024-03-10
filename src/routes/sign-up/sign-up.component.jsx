@@ -15,7 +15,7 @@ const SignUp = () => {
 
     const onSubmit = async (formData) => {
         try{
-            const { dataAuth, error } = await supabase.auth.signUp(
+            const { error } = await supabase.auth.signUp(
             {
               email: formData.email,
               password: formData.confirmPassword,
