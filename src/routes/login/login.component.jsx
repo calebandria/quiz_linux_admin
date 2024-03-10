@@ -17,7 +17,7 @@ const LogIn = ({setToken})=>{
             password: formData.password, 
           })
           if(error) throw(error)
-          console.log(data)
+          /* console.log(data) */
           setToken(data)
           navigate("/homepage")
 

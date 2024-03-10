@@ -4,23 +4,25 @@ import { Outlet, Link} from "react-router-dom";
 import { ReactComponent as LinuxLogo} from '../../assets/linux_logo.svg'
 import './navigation.styles.scss'
 import  {useState} from 'react'
+import DropdownMenu from "../../components/dropdown-menu/dropdown-menu.component";
+
 const Navigation = ({token})=>{
-    const  [active, setActive] = useState("");
+    const  [activeColor, setActiveColor] = useState("");
     const handleFocus = (event)=>{
-        setActive(event.target.attributes[0].nodeValue)
+        setActiveColor(event.target.attributes[0].nodeValue)
     }
 
     return(
         <Fragment>
             <div className="navigation">
                <div className="nav-links-container">
-                {token?<Link id="theme" className="nav-link" to='/themes' style={{color:active==="theme" ? "white" : "#1e1e1e"}} onFocus={handleFocus}>
+                {token?<Link id="theme" className="nav-link" to='/themes' style={{color:activeColor==="theme" ? "white" : "#1e1e1e"}} onFocus={handleFocus}>
                     THEMES
                 </Link>:""}
-                {token?<Link id="question" className="nav-link" to='/questions' style={{color:active==="question" ? "white" : "#1e1e1e"}} onFocus={handleFocus}>
+                {token?<Link id="question" className="nav-link" to='/questions' style={{color:activeColor==="question" ? "white" : "#1e1e1e"}} onFocus={handleFocus}>
                     QUESTIONS
                 </Link>:""}
-                {token?<Link id="answer" className="nav-link" to='/answers' style={{color:active==="answer" ? "white" : "#1e1e1e"}} onFocus={handleFocus}>
+                {token?<Link id="answer" className="nav-link" to='/answers' style={{color:activeColor==="answer" ? "white" : "#1e1e1e"}} onFocus={handleFocus}>
                     ANSWERS
                 </Link>:""}
                </div>
@@ -30,9 +32,9 @@ const Navigation = ({token})=>{
                         LINUX QUIZ ADMIN
                 </Link>
                </div>
-               <Link id="signup" className="nav-link" to='/signup' style={{color:active==="signup" ? "white" : "#1e1e1e"}} onFocus={handleFocus}>
+               {token?"":<Link id="signup" className="nav-link" to='/signup' style={{color:activeColor==="signup" ? "white" : "#1e1e1e"}} onFocus={handleFocus}>
                     SIGN UP
-               </Link>
+               </Link>}
             </div>
             <Outlet/>
         </Fragment>
