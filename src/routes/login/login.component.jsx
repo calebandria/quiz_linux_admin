@@ -4,7 +4,6 @@ import { supabase } from '../../utils/supabase/supabase.utils'
 import './login.styles.scss'
 import { useNavigate } from 'react-router-dom'
 
-
 const LogIn = ({setToken})=>{
     const { register, handleSubmit, formState: { errors }} = useForm();
 
@@ -19,7 +18,7 @@ const LogIn = ({setToken})=>{
           if(error) throw(error)
           /* console.log(data) */
           setToken(data)
-          navigate("/homepage")
+          navigate("/")
 
         } catch (error) {
             alert(error)

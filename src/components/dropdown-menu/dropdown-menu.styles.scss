@@ -1,0 +1,53 @@
+.dropdown{
+    background-color: white;
+    position: absolute;
+    width: 10vw;
+    height: 30vh;
+    border-radius: 0.5em;
+    border: grey solid;
+
+    .name{
+        display: flex;
+        align-items: center;
+        border-bottom: solid 2.5px #FFA629 ;
+        .account-icon{
+            color: #FFA629;
+        }
+        
+    }
+    
+    h3{
+        
+    }
+
+    div{
+        margin: 15px;
+    }
+    .menu{
+        display: flex;
+        align-items: center;
+        justify-content:space-between;
+        transition-property: background-color;
+        transition-duration: 1s;
+        transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+        cursor: pointer;
+
+        .menu-icon{
+            color: #FFA629;
+        }
+        a{
+            color: black;
+        }
+        .arrow-right{
+            color: #FFA629;
+        }
+        &:hover{
+            background-color: #494646;
+            opacity: 0.5;
+            
+        }
+    }
+    
+    
+
+}
