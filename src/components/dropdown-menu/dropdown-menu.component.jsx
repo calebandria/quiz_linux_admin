@@ -6,13 +6,13 @@ import PersonIcon from '@mui/icons-material/Person';
 import SettingsIcon from '@mui/icons-material/Settings';
 import LogoutIcon from '@mui/icons-material/Logout';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
-const DropdownMenu = ({token})=>{
+const DropdownMenu = ({token, setToken})=>{
     let navigate = useNavigate()
 
     const handleLogout = ()=>{
         sessionStorage.removeItem('token')
-        navigate('/signup')
-        
+        setToken(false)
+        navigate("/")
     }
     
     return(

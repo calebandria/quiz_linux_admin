@@ -5,10 +5,11 @@ import './navigation.styles.scss'
 import  {useState} from 'react'
 import DropdownMenu from "../../components/dropdown-menu/dropdown-menu.component";
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-const Navigation = ({token})=>{
+const Navigation = ({token, setToken})=>{
 
     const  [activeColor, setActiveColor] = useState("");
     const [activeDropdown, setActiveDropdown] = useState(false)
+    
 
     const handleFocus = (event)=>{
         setActiveColor(event.target.attributes[0].nodeValue)
@@ -43,7 +44,7 @@ const Navigation = ({token})=>{
                     {token?<AccountCircleIcon id="account-icon"style={{ fontSize: 30 ,color:activeColor==="account-icon" ? "white" : "#1e1e1e"}} onClick={handleDropdown}/>:<Link id="/signup" className="nav-link" to='/signup' style={{color:activeColor==="signup" ? "white" : "#1e1e1e"}} onFocus={handleFocus}>
                         SIGN UP
                 </Link>}
-                    {token && activeDropdown && <DropdownMenu token={token} className="dropdown-menu"/>}
+                    {token && activeDropdown && <DropdownMenu token={token} setToken={setToken}/>}
                </div>
         </div>
     </div>

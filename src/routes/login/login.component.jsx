@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form'
 import { supabase } from '../../utils/supabase/supabase.utils'
 import './login.styles.scss'
 import { useNavigate } from 'react-router-dom'
+import TypeWriter from '../../components/typewriter/typewriter.component'
 
 const LogIn = ({setToken})=>{
     const { register, handleSubmit, formState: { errors }} = useForm();
@@ -27,10 +28,11 @@ const LogIn = ({setToken})=>{
 
     return(
         <div className="login">
-            <form onSubmit={handleSubmit(onSubmit)} className='mail_signup'>
+            {<TypeWriter text="You will find more than you think"/>}
+            <form onSubmit={handleSubmit(onSubmit)} className='mail_login'>
                 <h3>LOG IN</h3>
                 <div>
-                    <input type="email" id="email" placeholder='email'  {...register('email', { required: 'Email is required' })} />
+                    <input type="email" id="email" placeholder='Email'  {...register('email', { required: 'Email is required' })} />
                     {errors.email && <span><br/>{errors.email.message}</span>}
                 </div>
                 <div>
@@ -39,6 +41,7 @@ const LogIn = ({setToken})=>{
                 </div>
                 <button type="submit">CONNECT</button>
             </form>
+            
         </div>
     )
 }

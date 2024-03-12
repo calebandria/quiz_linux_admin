@@ -27,12 +27,14 @@ const App = () => {
   useEffect(()=>{
     if(sessionStorage.getItem('token'))
       setToken(sessionStorage.getItem('token'))
+
+      console.log(sessionStorage.getItem('token'))
   },[])
 
 
   return (
     <div>
-      <Navigation token={token} />
+      <Navigation token={token} setToken={setToken} />
       <Routes>
       <Route  element= {<Outlet/>}>
         <Route index element={token? <Home/> : <LogIn setToken={setToken} />}/>
