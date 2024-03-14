@@ -19,16 +19,17 @@ const Answers = ()=>{
 const App = () => {
   const [token, setToken] = useState(false);
 
-  if(token){
-    sessionStorage.setItem('token',JSON.stringify(token));
-  }
+    if(token){
+      sessionStorage.setItem('token',JSON.stringify(token));
+    }
+
+
 
   /* maintaining the subscription over all the application */
   useEffect(()=>{
-    if(sessionStorage.getItem('token'))
-      setToken(sessionStorage.getItem('token'))
-
-      console.log(sessionStorage.getItem('token'))
+    const storedToken = sessionStorage.getItem('token')
+    if(storedToken)
+      setToken(JSON.parse(storedToken))
   },[])
 
 

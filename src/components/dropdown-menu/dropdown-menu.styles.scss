@@ -28,6 +28,7 @@
         align-items: center;
         justify-content:space-between;
         transition-property: background-color;
+        transition-property: border-radius;
         transition-duration: 1s;
         transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
         cursor: pointer;
@@ -44,6 +45,7 @@
         &:hover{
             background-color: #494646;
             opacity: 0.5;
+            border-radius: 0.5em;
             
         }
     }

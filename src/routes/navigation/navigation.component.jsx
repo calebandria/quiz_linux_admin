@@ -16,8 +16,16 @@ const Navigation = ({token, setToken})=>{
         if(activeDropdown) setActiveDropdown(false);
     }
     const handleDropdown = (event)=>{
-        activeDropdown?setActiveDropdown(false):setActiveDropdown(true)
-        setActiveColor(event.target.id)
+        if(activeDropdown){
+            setActiveDropdown(false);
+            setActiveColor("");
+        }
+        else {
+            setActiveDropdown(true);
+            setActiveColor(event.target.id)
+        }
+        /* activeDropdown?setActiveDropdown(false):setActiveDropdown(true)
+        setActiveColor(event.target.id) */
     }
 
     return(
@@ -41,7 +49,7 @@ const Navigation = ({token, setToken})=>{
                 </Link>
                </div>
                <div> 
-                    {token?<AccountCircleIcon id="account-icon"style={{ fontSize: 30 ,color:activeColor==="account-icon" ? "white" : "#1e1e1e"}} onClick={handleDropdown}/>:<Link id="/signup" className="nav-link" to='/signup' style={{color:activeColor==="signup" ? "white" : "#1e1e1e"}} onFocus={handleFocus}>
+                    {token?<AccountCircleIcon id="account-icon"style={{ fontSize: 30 ,color:activeColor==="account-icon" ? "white" : "#1e1e1e", cursor:"pointer"}} onClick={handleDropdown}/>:<Link id="signup" className="nav-link" to='/signup' style={{color:activeColor==="signup" ? "white" : "#1e1e1e"}} onFocus={handleFocus}>
                         SIGN UP
                 </Link>}
                     {token && activeDropdown && <DropdownMenu token={token} setToken={setToken}/>}
