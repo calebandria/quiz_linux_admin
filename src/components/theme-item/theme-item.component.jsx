@@ -1,40 +1,35 @@
-import  './theme-item.styles.scss'
-import { useState,useEffect } from "react";
-const ThemeItem = ({title,setLabel})=>{
-    const [theme, setTheme] = useState([]);
-    const [active,setActive] = useState(-1)
-    useEffect(()=>{
-        fetch('http://localhost:5000/theme/get')
-            .then(response => response.json())
-            .then(donnees=>{
-                setTheme(donnees.data);
-            })
-            .catch(error => console.log(error))
-    },[])
+import './theme-item.styles.scss'
+import { useState, useContext } from "react";
+import { ThemesContext } from '../../contexts/themes.context';
 
-    const handleClick = (event,index) =>{
+const ThemeItem = ({ title, setLabel }) => {
+    const { themes } = useContext(ThemesContext);
+    const [active, setActive] = useState(-1)
+
+
+    const handleClick = (event, index) => {
         setLabel(event.target.innerHTML);
         setActive(index)
     }
 
-    return(
+    return (
         <div className="list-items">
             <div className="content">
                 <h2 className="title">{title}</h2>
                 <div className="content-list">
-                {
-                   theme.map((element,index)=>{
-                    return(
-                        <p key={index} style={{backgroundColor:active===index? "#FFA629":"#757575"}} onClick={(e)=>handleClick(e,index)}>{element.label}</p>
-                    )}) 
-                }
-                
+                    {
+                        themes.map((element, index) => {
+                            return (
+                                <p key={index} style={{ backgroundColor: active === index ? "#FFA629" : "#757575" }} onClick={(e) => handleClick(e, index)}>{element.theme}</p>
+                            )
+                        })
+                    }
                 </div>
             </div>
         </div>
 
-        
+
     )
-    
+
 }
 export default ThemeItem;

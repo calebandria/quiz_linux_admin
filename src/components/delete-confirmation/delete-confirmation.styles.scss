@@ -1,0 +1,62 @@
+.delete-confirmation {
+    position: absolute;
+    right: 35vw;
+    bottom: 40vh; 
+    background-color: #1e1e1e;
+    padding: 2em;
+    border: solid 2px #FFA629;
+    border-radius: 5px;
+    z-index: 2;
+
+    .delete-theme{
+        width: 25vw;
+        height: 25vh;
+        position: relative;
+    
+            h2{
+                color:#FFA629;
+                font-family: 'Roboto Mono';
+                font-weight:lighter;
+                font-size:xx-large;
+            }
+
+            .input-1{
+                width: 5em;
+                position: absolute;
+                left: 20vw;    
+                margin-top:15px;
+                padding: 10px;
+                background-color: #FFA629;
+                border: none;
+                font-size: large;
+                color:white;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+
+            .input-2{
+                width: 5em;
+                position: absolute; 
+                left: 15vw; 
+                margin-top:15px;
+                padding: 10px;
+                background-color: #FFA629;
+                border: none;
+                font-size: large;
+                color:white;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+        }
+        .close-button{
+            position: absolute;
+            border-radius: 100%;
+            background-color: rgb(30, 30, 30);
+            padding: 10px;
+            top: 0;
+            left: 30vw;
+            cursor: pointer;
+            border:solid 2px #FFA629;
+    
+        }
+}
