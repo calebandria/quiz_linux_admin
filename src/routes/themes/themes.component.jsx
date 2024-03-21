@@ -1,7 +1,6 @@
 import './themes.styles.scss'
 import Icon from '@mui/material/Icon';
 /* import { supabase } from '../../utils/supabase/supabase.utils'; */
-
 import { useState, useContext } from 'react';
 import AddIcon from '@mui/icons-material/Add';
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -9,13 +8,16 @@ import EditIcon from '@mui/icons-material/Edit';
 import { ThemesContext } from '../../contexts/themes.context';
 import CreateTheme from '../../components/create-theme/create-theme.component'
 import DeleteConfirmation from '../../components/delete-confirmation/delete-confirmation.component';
+import EditTheme from '../../components/edit-theme/edit-theme.components';
+
 const Themes = () => {
 
   const [activeCrea, setActiveCrea] = useState(false);
   const { themes, setThemes } = useContext(ThemesContext);
   const [activeDel, setActiveDel] = useState(false);
   const [id, setId] = useState(0);
-
+  const [activeEdit, setActiveEdit] = useState(false)
+  const [label, setLabel] = useState("");
 
   const mesDel = "Are you sure to delete this theme and all the questions with it?"
 
@@ -32,14 +34,20 @@ const Themes = () => {
     console.log("clicked")
   }
 
+  const handleClickEdit = () => {
+    if (activeEdit)
+      setActiveEdit(false)
+    else setActiveEdit(true)
+  }
 
- /*  const handleConfirmDelete = async(id) => {
-    const { error } = await supabase
-        .from('theme')
-        .delete()
-        .eq('id_theme',id)
-        if(error) throw error
-  }; */
+
+  /*  const handleConfirmDelete = async(id) => {
+     const { error } = await supabase
+         .from('theme')
+         .delete()
+         .eq('id_theme',id)
+         if(error) throw error
+   }; */
   return (
     <div className="container">
       <div className="themes">
@@ -52,19 +60,23 @@ const Themes = () => {
                   <li>{theme.id_theme}</li>
                   <li>{theme.theme}</li>
                   <li>
-                    <Icon onClick className='edit' sx={{ color: '#1e1e1e' }} >
+                    <Icon onClick={() => {
+                      handleClickEdit()
+                      setLabel(theme.theme)
+                      setId(theme.id_theme)
+                    }}
+                      className='edit' 
+                      sx={{ color: '#1e1e1e' }} >
                       <EditIcon />
                     </Icon>
 
-                    <Icon onClick={ ()=>{
+                    <Icon onClick={() => {
                       /* console.log("delete "+ theme.id_theme) */
                       handleClickDel()
                       setId(theme.id_theme)
-                      }
-                      } 
-                      className='delete' 
-                      sx={{ color: '#1e1e1e' }} 
-                    >
+                    }}
+                      className='delete'
+                      sx={{ color: '#1e1e1e' }}>
                       <DeleteIcon />
                     </Icon>
                   </li>
@@ -76,7 +88,8 @@ const Themes = () => {
         <Icon className='plus' sx={{ color: '#FFA629' }} onClick={() => handleClickCrea()} ><AddIcon /></Icon>
       </div>
       {activeCrea && <CreateTheme activeCrea={activeCrea} handleClickCrea={handleClickCrea} setThemes={setThemes}></CreateTheme>}
-      {activeDel && <DeleteConfirmation  messageDelete={mesDel} handleClickDele={handleClickDel} id={id} setId={setId} setThemes={setThemes}></DeleteConfirmation> }
+      {activeDel && <DeleteConfirmation messageDelete={mesDel} handleClickDele={handleClickDel} id={id} setId={setId} setThemes={setThemes}></DeleteConfirmation>}
+      {activeEdit && <EditTheme handleClickEdit={handleClickEdit} id={id} label={label} setThemes={setThemes}></EditTheme> }
       <div className='overlay-visible' style={{ display: (activeCrea | activeDel) ? "block" : "none" }}></div>
     </div>
 
