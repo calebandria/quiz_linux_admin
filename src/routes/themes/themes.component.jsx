@@ -35,6 +35,7 @@ const Themes = () => {
   }
 
   const handleClickEdit = () => {
+    console.log("clickedfqsdf")
     if (activeEdit)
       setActiveEdit(false)
     else setActiveEdit(true)
