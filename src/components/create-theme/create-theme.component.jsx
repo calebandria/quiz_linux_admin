@@ -9,7 +9,7 @@ import { useForm } from 'react-hook-form'
 import { DevTool } from '@hookform/devtools'
 
 
-const CreateTheme = ({ activeCrea, handleClickCrea, setThemes }) => {
+const CreateTheme = ({ handleClickCrea, setThemes }) => {
     const form = useForm({
         defaultValues: {
             theme: ""
@@ -22,28 +22,28 @@ const CreateTheme = ({ activeCrea, handleClickCrea, setThemes }) => {
     const onSubmit = async (event) => {
         try {
             const { data, error } = await supabase
-            .from('theme')
-            .insert([
-                { theme: event.theme },
-            ])
-            .select()
-            if(error) throw(error)
+                .from('theme')
+                .insert([
+                    { theme: event.theme },
+                ])
+                .select()
+            if (error) throw (error)
 
             alert("Theme successfully created: ", data)
         } catch (error) {
             alert("An error occured", error.message)
         }
-        
+
     }
 
     useEffect(() => {
-        if(isSubmitSuccessful) {
+        if (isSubmitSuccessful) {
             reset();
-            const fetchTheme = async()=>{
+            const fetchTheme = async () => {
                 let { data: theme, error } = await supabase
                     .from('theme')
                     .select('*')
-        
+
                 if (error) {
                     alert(error)
                 }
@@ -54,7 +54,7 @@ const CreateTheme = ({ activeCrea, handleClickCrea, setThemes }) => {
     }, [isSubmitSuccessful, reset, setThemes])
 
     return (
-        <div className="create-theme" style={{ display: activeCrea ? "block" : "none" }} onSubmit={handleSubmit(onSubmit)}>
+        <div className="create-theme" /* style={{ display: activeCrea ? "block" : "none" }} */ onSubmit={handleSubmit(onSubmit)}>
             <form className='add-theme' method="post" noValidate>
                 <h2>Add a theme</h2>
                 <input type="text" id="" {...register("theme", {
@@ -68,7 +68,7 @@ const CreateTheme = ({ activeCrea, handleClickCrea, setThemes }) => {
             </form>
             <DevTool control={control} />
             <div className="close-button" onClick={handleClickCrea}>
-                <Icon sx={{ color: '#FFA629' }}><CloseIcon/></Icon>
+                <Icon sx={{ color: '#FFA629' }}><CloseIcon /></Icon>
             </div>
         </div>
     )
