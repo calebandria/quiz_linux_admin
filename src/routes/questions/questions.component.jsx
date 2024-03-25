@@ -1,0 +1,68 @@
+import './questions.styles.scss'
+import { useContext, useState } from "react";
+import CreateQuestion from "../../components/create-question/create-question.component";
+import { QuestionsContext } from "../../contexts/questions.context";
+import Icon from '@mui/material/Icon';
+import AddIcon from '@mui/icons-material/Add';
+import DeleteIcon from '@mui/icons-material/Delete';
+import EditIcon from '@mui/icons-material/Edit';
+
+const Questions = () => {
+    const [activeCrea, setActiveCrea] = useState(false);
+    const { questions, setQuestions } = useContext(QuestionsContext);
+
+    const handleClickCrea = () => {
+        if (activeCrea)
+            setActiveCrea(false)
+        else setActiveCrea(true)
+    }
+
+    return (
+        <div className="container">
+            <div className="questions">
+                <h1 className="title">QUESTIONS</h1>
+                <div className="list-content">
+                    {questions.map((question, id) => {
+                        return (
+                            <div key={id} className="list-paragraph">
+                                <ul>
+                                    <li>{question.id_question}</li>
+                                    <li>{question.question}</li>
+                                    <li>{question.id_theme}</li>
+                                    <li>
+                                        <Icon onClick={() => {
+                                            /* handleClickEdit()
+                                            setLabel(theme.theme)
+                                            setId(theme.id_theme) */
+                                        }}
+                                            className='edit'
+                                            sx={{ color: '#1e1e1e' }} >
+                                            <EditIcon />
+                                        </Icon>
+
+                                        <Icon onClick={() => {
+                                            /* console.log("delete "+ theme.id_theme) */
+                                            /* handleClickDel()
+                                            setId(theme.id_theme) */
+                                        }}
+                                            className='delete'
+                                            sx={{ color: '#1e1e1e' }}>
+                                            <DeleteIcon />
+                                        </Icon>
+                                    </li>
+                                </ul>
+                            </div>
+                        )
+                    })}
+                </div>
+                <Icon className='plus' sx={{ color: '#FFA629' }} onClick={() => handleClickCrea()} ><AddIcon /></Icon>
+            </div>
+            {activeCrea && <CreateQuestion activeCrea={activeCrea} handleClickCrea={handleClickCrea} setQuestions={setQuestions} />}
+            <div className='overlay-visible' style={{ display: (activeCrea) ? "block" : "none" }}></div>
+        </div>
+
+
+    )
+}
+
+export default Questions;

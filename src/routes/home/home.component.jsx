@@ -5,13 +5,13 @@ import './home.styles.scss'
 import { useState } from "react";
 
 const Home = () =>{
-    const [label, setLabel] = useState("");
+    const [id_theme, setId_theme] = useState(0);
     /* const titles =["THEMES", "QUESTIONS", "ANSWERS"]; */
     
     return(
         <div className="home-container">
-            <ThemeItem title ="THEMES" setLabel={setLabel} className="list-item"/>
-            <QuestionItem title = "QUESTIONS" setLabel={setLabel} label={label} className="list-item" />
+            <ThemeItem title ="THEMES" setId_theme={setId_theme} className="list-item"/>
+            <QuestionItem title = "QUESTIONS" setId_theme={setId_theme} id_theme={id_theme} className="list-item" />
         </div>
         
     )

@@ -1,34 +1,28 @@
+import { QuestionsContext } from '../../contexts/questions.context';
 import './question-item.styles.scss'
-import { useState,useEffect } from "react";
-const QuestionItem = ({title, label})=>{
-    const [question, setQuestion] = useState([]);
+import { /* useState, */ useContext} from "react";
+const QuestionItem = ({title, id_theme})=>{
+    const {questions} = useContext(QuestionsContext);
+
     /* const handleClick = (event) =>{
         setLabel(event.target.innerHTML);
     }
 
  */
-    useEffect(()=>{
-        fetch('http://localhost:5000/question/get')
-            .then(response => response.json())
-            .then(donnees=>{
-                setQuestion(donnees.data);
-            })
-            .catch(error => console.log(error))
-        },[])   
+   
     return(
         <div className="list-items">
             <div className="content">
                 <h2 className="title">{title}</h2>
                 <div className="content-list">
                 {
-                   question.filter(element=>
-                        element.label === label
+                   questions.filter(element=>
+                        element.id_theme === id_theme
                     ).map((element, index)=>{
                         return(
-                            <p key={index}>{element.content}</p>
+                            <p key={index}>{element.question}</p>
                     )})
                 }
-                
                 </div>
             </div>
         </div>
