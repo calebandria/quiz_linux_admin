@@ -3,13 +3,15 @@ import Icon from '@mui/material/Icon'
 import CloseIcon from '@mui/icons-material/Close';
 import { supabase } from '../../utils/supabase/supabase.utils'
 
-import { useEffect } from 'react'
+import { useContext, useEffect } from 'react'
 
-import { useForm } from 'react-hook-form'
+import { Controller, useForm } from 'react-hook-form'
 import { DevTool } from '@hookform/devtools'
+import { FormControl, InputLabel, MenuItem, Select, TextField, Button } from '@mui/material';
+import { ThemesContext } from '../../contexts/themes.context';
 
-
-const CreateQuestion = ({ handleClickCrea, setThemes }) => {
+const CreateQuestion = ({ handleClickCrea, setQuestions }) => {
+    const { themes } = useContext(ThemesContext)
     const form = useForm({
         defaultValues: {
             theme: ""
@@ -17,20 +19,24 @@ const CreateQuestion = ({ handleClickCrea, setThemes }) => {
     });
 
 
-    const { register, control, handleSubmit, reset, formState } = form;
+    const { control, handleSubmit, reset, formState } = form;
     const { errors, isSubmitSuccessful } = formState;
 
     const onSubmit = async (event) => {
         try {
             const { data, error } = await supabase
-                .from('theme')
+                .from('question')
                 .insert([
-                    { theme: event.theme },
+                    { question: event.question, id_theme: event.id_theme },
                 ])
                 .select()
-            if (error) throw (error)
 
-            alert("Theme successfully created: ", data)
+            if (error) {
+                throw(error)
+            }
+            
+
+            alert("Question created successfully: ", data)
         } catch (error) {
             alert("An error occured", error.message)
         }
@@ -40,39 +46,66 @@ const CreateQuestion = ({ handleClickCrea, setThemes }) => {
     useEffect(() => {
         if (isSubmitSuccessful) {
             reset();
-            const fetchTheme = async () => {
-                let { data: theme, error } = await supabase
-                    .from('theme')
+            const fetchQuestion = async () => {
+                let { data: question, error } = await supabase
+                    .from('question')
                     .select('*')
 
                 if (error) {
                     alert(error)
                 }
-                else setThemes(theme)
+                else setQuestions(question)
             }
-            fetchTheme()
+            fetchQuestion()
         }
-    }, [isSubmitSuccessful, reset, setThemes])
+    }, [isSubmitSuccessful, reset, setQuestions])
 
     return (
-        <div className="create-theme" /* style={{ display: activeCrea ? "block" : "none" }} */ onSubmit={handleSubmit(onSubmit)}>
-            <form className='add-theme' method="post" noValidate>
+        <div className="create-question" /* style={{ display: activeCrea ? "block" : "none" }} */ onSubmit={handleSubmit(onSubmit)}>
+            <form className='add-question' method="post" noValidate>
                 <h2>Add a question</h2>
-                <input type="text" id="" {...register("theme", {
-                    required: {
-                        value: true,
-                        message: 'New theme is required'
-                    }
-                })} />
+                <Controller
+                    name="question"
+                    control={control}
+                    defaultValue=''
+                    render={({ field }) => (
+                        <TextField
+                            {...field}
+                            className='question'
+                            label="Question"
+                            fullWidth
+                            required
+                        />
+                    )}
+                />
+                <FormControl fullWidth>
+                    <InputLabel id="dropdown-label">Theme</InputLabel>
+                    <Controller
+                        name="id_theme"
+                        control={control}
+                        defaultValue=''
+                        render={({ field }) => (
+
+                            <Select
+                                {...field}
+                                labelId='dropdown-label'
+                                id="dropdownSelect"
+                                fullWidth
+                            >
+                                {themes.map((theme, id) => (
+                                    <MenuItem key={id} value={theme.id_theme}>{theme.theme}</MenuItem>
+                                ))}
+                            </Select>
+                        )}
+                    />
+                </FormControl>
                 <p className="error">{errors.label?.message}</p>
-          {/*       <input type="submit" value="Add" /> */}
+                <Button type="submit" value="Add">Add</Button>
             </form>
             <DevTool control={control} />
             <div className="close-button" onClick={handleClickCrea}>
                 <Icon sx={{ color: '#FFA629' }}><CloseIcon /></Icon>
             </div>
-
-            <button className='next'onClick>Next</button>
         </div>
     )
 }

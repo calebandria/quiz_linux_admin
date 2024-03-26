@@ -49,6 +49,7 @@ const Themes = () => {
          .eq('id_theme',id)
          if(error) throw error
    }; */
+   
   return (
     <div className="container">
       <div className="themes">
