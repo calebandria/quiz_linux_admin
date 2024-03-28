@@ -2,13 +2,13 @@ import './create-question.styles.scss'
 import Icon from '@mui/material/Icon'
 import CloseIcon from '@mui/icons-material/Close';
 import { supabase } from '../../utils/supabase/supabase.utils'
-
 import { useContext, useEffect } from 'react'
 
 import { Controller, useForm } from 'react-hook-form'
 import { DevTool } from '@hookform/devtools'
 import { FormControl, InputLabel, MenuItem, Select, TextField, Button } from '@mui/material';
 import { ThemesContext } from '../../contexts/themes.context';
+
 
 const CreateQuestion = ({ handleClickCrea, setQuestions }) => {
     const { themes } = useContext(ThemesContext)
@@ -75,11 +75,26 @@ const CreateQuestion = ({ handleClickCrea, setQuestions }) => {
                             label="Question"
                             fullWidth
                             required
+                            sx={{
+                                '& .MuiOutlinedInput-root': {
+                                  backgroundColor: 'white', // Set the background color to white
+                                  '& fieldset': {
+                                    borderColor: 'primary.main', // Adjust the border color if needed
+                                  },
+                                  '&:hover fieldset': {
+                                    borderColor: 'primary.main', // Adjust the border color on hover if needed
+                                  },
+                                  '&.Mui-focused fieldset': {
+                                    borderColor: 'primary.main', // Adjust the border color when focused if needed
+                                  },
+                                },
+                              }}
+                            
                         />
                     )}
                 />
-                <FormControl fullWidth>
-                    <InputLabel id="dropdown-label">Theme</InputLabel>
+                <FormControl variant='filled'required fullWidth>
+                    <InputLabel id="demo-simple-select-required-label">Theme</InputLabel>
                     <Controller
                         name="id_theme"
                         control={control}
@@ -88,9 +103,10 @@ const CreateQuestion = ({ handleClickCrea, setQuestions }) => {
 
                             <Select
                                 {...field}
-                                labelId='dropdown-label'
-                                id="dropdownSelect"
+                                labelId='demo-simple-select-required-label'
+                                id="demo-simple-select-required"
                                 fullWidth
+
                             >
                                 {themes.map((theme, id) => (
                                     <MenuItem key={id} value={theme.id_theme}>{theme.theme}</MenuItem>

@@ -32,6 +32,10 @@
                     height: auto;
                     padding: 0 40px;
 
+                    .content{
+                        width: 20vw;
+                    }
+
                     .delete {
                         cursor: pointer;
                     }

@@ -27,7 +27,7 @@ const Questions = () => {
                             <div key={id} className="list-paragraph">
                                 <ul>
                                     <li>{question.id_question}</li>
-                                    <li>{question.question}</li>
+                                    <li className='content'>{question.question}</li>
                                     <li>{question.id_theme}</li>
                                     <li>
                                         <Icon onClick={() => {
