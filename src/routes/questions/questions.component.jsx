@@ -6,15 +6,26 @@ import Icon from '@mui/material/Icon';
 import AddIcon from '@mui/icons-material/Add';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
+import DeleteQuestion from '../../components/delete-question/delete-question.component';
 
 const Questions = () => {
     const [activeCrea, setActiveCrea] = useState(false);
     const { questions, setQuestions } = useContext(QuestionsContext);
+    const [id, setId] = useState(0);
+    const [activeDel, setActiveDel] = useState(false);
+
+    const mesDel = "Are you sure to delete this question and all the anwsers with it?"
 
     const handleClickCrea = () => {
         if (activeCrea)
             setActiveCrea(false)
         else setActiveCrea(true)
+    }
+
+    const handleClickDel = () => {
+        if (activeDel)
+            setActiveDel(false)
+        else setActiveDel(true)
     }
 
     return (
@@ -41,7 +52,8 @@ const Questions = () => {
                                         </Icon>
 
                                         <Icon onClick={() => {
-                                            /* console.log("delete "+ theme.id_theme) */
+                                            setId(question.id_question)
+                                            handleClickDel()
                                             /* handleClickDel()
                                             setId(theme.id_theme) */
                                         }}
@@ -58,8 +70,12 @@ const Questions = () => {
                 <Icon className='plus' sx={{ color: '#FFA629' }} onClick={() => handleClickCrea()} ><AddIcon /></Icon>
             </div>
             {activeCrea && <CreateQuestion activeCrea={activeCrea} handleClickCrea={handleClickCrea} setQuestions={setQuestions} />}
-            <div className='overlay-visible' style={{ display: (activeCrea) ? "block" : "none" }}></div>
-        </div>
+            {activeDel && <DeleteQuestion messageDelete={mesDel} id={id} handleClickDele={handleClickDel} setQuestions={setQuestions}/>}
+            <div className='overlay-visible' style={{ display: (activeCrea | activeDel) ? "block" : "none" }}></div>
+            
+        </div> 
+
+
 
 
     )

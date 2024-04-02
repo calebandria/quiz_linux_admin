@@ -60,7 +60,7 @@ const EditTheme = ({ handleClickEdit, label, setThemes,id}) => {
     return (
         <div className="create-theme" onSubmit={handleSubmit(onSubmit)}>
             <form className='add-theme' method="post" noValidate>
-                <h2>Add a theme</h2>
+                <h2>Edit a theme</h2>
                 <input type="text" id="" {...register("theme", {
                     required: {
                         value: true,
