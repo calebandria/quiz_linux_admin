@@ -26,6 +26,22 @@ const theme = createTheme({
       main: '#D9D9D9', // Change the secondary color
     },
   },
+  components: {
+    MuiTextField: {
+      styleOverrides: {
+        root: {
+          backgroundColor: 'white',
+        },
+      },
+    },
+    MuiSelect: {
+      styleOverrides: {
+        root: {
+          backgroundColor: 'white',
+        },
+      },
+    },
+  }
 });
 
 const App = () => {

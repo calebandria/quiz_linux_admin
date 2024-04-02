@@ -85,7 +85,7 @@ const Questions = () => {
             {activeCrea && <CreateQuestion activeCrea={activeCrea} handleClickCrea={handleClickCrea} setQuestions={setQuestions} />}
             {activeDel && <DeleteQuestion messageDelete={mesDel} id={id} handleClickDele={handleClickDel} setQuestions={setQuestions}/>}
             {activeEdit && <EditQuestion handleClickEdit={handleClickEdit} label={label} id={id}  idTheme={idTheme} setQuestions={setQuestions}/>}
-            <div className='overlay-visible' style={{ display: (activeCrea | activeDel) ? "block" : "none" }}></div>
+            <div className='overlay-visible' style={{ display: (activeCrea | activeDel | activeEdit) ? "block" : "none" }}></div>
             
         </div> 
 

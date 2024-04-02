@@ -74,22 +74,8 @@ const CreateQuestion = ({ handleClickCrea, setQuestions }) => {
                             className='question'
                             label="Question"
                             fullWidth
+                            variant='filled'
                             required
-                            sx={{
-                                '& .MuiOutlinedInput-root': {
-                                  backgroundColor: 'white', // Set the background color to white
-                                  '& fieldset': {
-                                    borderColor: 'primary.main', // Adjust the border color if needed
-                                  },
-                                  '&:hover fieldset': {
-                                    borderColor: 'primary.main', // Adjust the border color on hover if needed
-                                  },
-                                  '&.Mui-focused fieldset': {
-                                    borderColor: 'primary.main', // Adjust the border color when focused if needed
-                                  },
-                                },
-                              }}
-                            
                         />
                     )}
                 />

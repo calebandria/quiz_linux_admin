@@ -92,7 +92,7 @@ const Themes = () => {
       {activeCrea && <CreateTheme activeCrea={activeCrea} handleClickCrea={handleClickCrea} setThemes={setThemes}></CreateTheme>}
       {activeDel && <DeleteConfirmation messageDelete={mesDel} handleClickDele={handleClickDel} id={id} setId={setId} setThemes={setThemes}></DeleteConfirmation>}
       {activeEdit && <EditTheme handleClickEdit={handleClickEdit} id={id} label={label} setThemes={setThemes}></EditTheme> }
-      <div className='overlay-visible' style={{ display: (activeCrea | activeDel) ? "block" : "none" }}></div>
+      <div className='overlay-visible' style={{ display: (activeCrea | activeDel | activeEdit) ? "block" : "none" }}></div>
     </div>
 
   )
