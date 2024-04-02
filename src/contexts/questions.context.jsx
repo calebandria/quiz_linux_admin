@@ -16,7 +16,9 @@ export const QuestionsProvider = ({ children }) => {
         if (error){
             alert(error)
         }
-        else setQuestions(question)
+        else {setQuestions(question)
+            console.log(question)
+        }
 
     }
 

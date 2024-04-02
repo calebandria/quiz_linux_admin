@@ -1,14 +1,15 @@
 import { QuestionsContext } from '../../contexts/questions.context';
 import './question-item.styles.scss'
-import { /* useState, */ useContext} from "react";
-const QuestionItem = ({title, id_theme})=>{
+import { useContext} from "react";
+const QuestionItem = ({title, id_theme, setId_question, setActiveQuest, activeQuest})=>{
     const {questions} = useContext(QuestionsContext);
 
-    /* const handleClick = (event) =>{
-        setLabel(event.target.innerHTML);
+    const handleClick = (event, index, id) =>{
+        setId_question(id)
+        setActiveQuest(index)
     }
 
- */
+
    
     return(
         <div className="list-items">
@@ -20,7 +21,7 @@ const QuestionItem = ({title, id_theme})=>{
                         element.id_theme === id_theme
                     ).map((element, index)=>{
                         return(
-                            <p key={index}>{element.question}</p>
+                            <p key={index} style={{ backgroundColor: activeQuest === index ? "#FFA629" : "#757575" }} onClick={(e) => handleClick(e, index, element.id_question)}>{element.question}</p>
                     )})
                 }
                 </div>

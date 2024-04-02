@@ -17,21 +17,13 @@ export const ThemesProvider = ({ children }) => {
         if (error) {
             alert(error)
         }
-        else setThemes(theme)
+        else {setThemes(theme)
+        console.log(theme)}
     }
 
     useEffect(() => {
 
         fetchTheme();
-
-        /* fetch('http://localhost:5000/theme/get')
-            .then(response => response.json())
-            .then(donnees=>{
-                setThemes(donnees.data);
-            })
-            .catch(error =>{
-                console.log(`Error: ${error}`)
-            }) */
     }, [])
 
     const value = { themes, setThemes }

@@ -8,13 +8,16 @@ import reportWebVitals from './reportWebVitals';
 
 import { ThemesProvider } from './contexts/themes.context';
 import { QuestionsProvider } from './contexts/questions.context';
+import { AnswersProvider } from './contexts/answers.context';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
       <ThemesProvider>
         <QuestionsProvider>
-          <App />
+          <AnswersProvider>
+            <App />
+          </AnswersProvider>       
         </QuestionsProvider>
       </ThemesProvider>
     </BrowserRouter>

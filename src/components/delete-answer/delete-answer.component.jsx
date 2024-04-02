@@ -1,4 +1,5 @@
-import './delete-question.styles.scss'
+import './delete-answer.styles.scss'
+
 import Icon from '@mui/material/Icon'
 import CloseIcon from '@mui/icons-material/Close'
 import { supabase } from '../../utils/supabase/supabase.utils'
@@ -6,16 +7,16 @@ import { useForm } from 'react-hook-form'
 import { useEffect } from 'react'
 
 
-const DeleteQuestion = ({ messageDelete, id, handleClickDele, setQuestions}) => {
+const DeleteAnswer = ({ messageDelete, id, handleClickDele, setAnswers}) => {
     const { handleSubmit, formState } = useForm();
     const { isSubmitSuccessful } = formState;
 
     const onSubmit = async () => {
         try {
             const { error } = await supabase
-                .from('question')
+                .from('answer')
                 .delete()
-                .eq('id_question', id)
+                .eq('id_answer', id)
             if (error) throw error
 
         } catch (error) {
@@ -26,19 +27,19 @@ const DeleteQuestion = ({ messageDelete, id, handleClickDele, setQuestions}) => 
     useEffect(() => {
         if (isSubmitSuccessful) {
             handleClickDele()
-            const fetchQuestion = async () => {
-                let { data: question, error } = await supabase
-                    .from('question')
+            const fetchAnswer = async () => {
+                let { data: answer, error } = await supabase
+                    .from('answer')
                     .select('*')
 
                 if (error) {
                     alert(error)
                 }
-                else setQuestions(question)
+                else setAnswers(answer)
             }
-            fetchQuestion()
+            fetchAnswer()
         }
-    }, [isSubmitSuccessful, handleClickDele, setQuestions])
+    }, [isSubmitSuccessful, handleClickDele, setAnswers])
 
 
 
@@ -58,4 +59,4 @@ const DeleteQuestion = ({ messageDelete, id, handleClickDele, setQuestions}) => 
 
 
 }
-export default DeleteQuestion
+export default DeleteAnswer

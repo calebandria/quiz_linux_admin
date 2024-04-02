@@ -7,14 +7,8 @@ import Questions from './routes/questions/questions.component';
 import SignUp from './routes/sign-up/sign-up.component';
 import LogIn from './routes/login/login.component';
 import React from 'react';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-
-
-const Answers = () => {
-  return (
-    <h1>I am Answers</h1>
-  )
-}
+import { createTheme, ThemeProvider } from '@mui/material/styles'
+import Answers from './routes/answers/answers.component';
 
 // Create a custom theme
 const theme = createTheme({

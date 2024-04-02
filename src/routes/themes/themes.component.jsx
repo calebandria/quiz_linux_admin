@@ -3,8 +3,8 @@ import Icon from '@mui/material/Icon';
 /* import { supabase } from '../../utils/supabase/supabase.utils'; */
 import { useState, useContext } from 'react';
 import AddIcon from '@mui/icons-material/Add';
-import DeleteIcon from '@mui/icons-material/Delete';
-import EditIcon from '@mui/icons-material/Edit';
+import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined';
+import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
 import { ThemesContext } from '../../contexts/themes.context';
 import CreateTheme from '../../components/create-theme/create-theme.component'
 import DeleteConfirmation from '../../components/delete-confirmation/delete-confirmation.component';
@@ -41,15 +41,6 @@ const Themes = () => {
     else setActiveEdit(true)
   }
 
-
-  /*  const handleConfirmDelete = async(id) => {
-     const { error } = await supabase
-         .from('theme')
-         .delete()
-         .eq('id_theme',id)
-         if(error) throw error
-   }; */
-   
   return (
     <div className="container">
       <div className="themes">
@@ -69,7 +60,7 @@ const Themes = () => {
                     }}
                       className='edit' 
                       sx={{ color: '#1e1e1e' }} >
-                      <EditIcon />
+                      <EditOutlinedIcon />
                     </Icon>
 
                     <Icon onClick={() => {
@@ -79,7 +70,7 @@ const Themes = () => {
                     }}
                       className='delete'
                       sx={{ color: '#1e1e1e' }}>
-                      <DeleteIcon />
+                      <DeleteOutlinedIcon />
                     </Icon>
                   </li>
                 </ul>

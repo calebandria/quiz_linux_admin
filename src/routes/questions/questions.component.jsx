@@ -4,8 +4,8 @@ import CreateQuestion from "../../components/create-question/create-question.com
 import { QuestionsContext } from "../../contexts/questions.context";
 import Icon from '@mui/material/Icon';
 import AddIcon from '@mui/icons-material/Add';
-import DeleteIcon from '@mui/icons-material/Delete';
-import EditIcon from '@mui/icons-material/Edit';
+import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined';
+import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
 import DeleteQuestion from '../../components/delete-question/delete-question.component';
 import EditQuestion from '../../components/edit-question/edit-question.component';
 
@@ -61,18 +61,17 @@ const Questions = () => {
                                         }}
                                             className='edit'
                                             sx={{ color: '#1e1e1e' }} >
-                                            <EditIcon />
+                                            <EditOutlinedIcon />
                                         </Icon>
 
                                         <Icon onClick={() => {
                                             setId(question.id_question)
                                             handleClickDel()
-                                            /* handleClickDel()
-                                            setId(theme.id_theme) */
+    
                                         }}
                                             className='delete'
                                             sx={{ color: '#1e1e1e' }}>
-                                            <DeleteIcon />
+                                            <DeleteOutlinedIcon />
                                         </Icon>
                                     </li>
                                 </ul>
