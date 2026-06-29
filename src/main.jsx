@@ -4,27 +4,21 @@ import { BrowserRouter } from 'react-router-dom';
 
 import './index.scss';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
 
 import { ThemesProvider } from './contexts/themes.context';
 import { QuestionsProvider } from './contexts/questions.context';
 import { AnswersProvider } from './contexts/answers.context';
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
+
+ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <BrowserRouter>
       <ThemesProvider>
         <QuestionsProvider>
           <AnswersProvider>
             <App />
-          </AnswersProvider>       
+          </AnswersProvider>
         </QuestionsProvider>
       </ThemesProvider>
     </BrowserRouter>
   </React.StrictMode>
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
