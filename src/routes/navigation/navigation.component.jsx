@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-import { ReactComponent as LinuxLogo} from '../../assets/linux_logo.svg'
+import LinuxLogo from '../../assets/linux_logo.svg?react'
 import './navigation.styles.scss'
 import  {useState} from 'react'
 import DropdownMenu from "../../components/dropdown-menu/dropdown-menu.component";

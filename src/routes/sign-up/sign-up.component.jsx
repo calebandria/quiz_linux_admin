@@ -4,9 +4,9 @@ import { useForm, Controller } from 'react-hook-form'
 import TextField from '@mui/material/TextField';
 import './sign-up.styles.scss'
 import { supabase } from '../../utils/supabase/supabase.utils'
-import { ReactComponent as GithubLogo } from '../../assets/github-icon.svg'
-import { ReactComponent as GoogleLogo } from '../../assets/google_icon.svg'
-import { ReactComponent as FacebookLogo } from '../../assets/facebook_log.svg'
+import GithubLogo from '../../assets/github-icon.svg?react'
+import GoogleLogo from '../../assets/google_icon.svg?react'
+import FacebookLogo from '../../assets/facebook_log.svg?react'
 
 
 import InputAdornment from '@mui/material/InputAdornment';
