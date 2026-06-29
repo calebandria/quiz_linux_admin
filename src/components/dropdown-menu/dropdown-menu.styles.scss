@@ -1,11 +1,14 @@
 .dropdown{
     background-color: white;
     position: absolute;
-    width: 10vw;
-    height: 30vh;
+    top: 100%;
+    right: 1em;
+    width: 12vw;
+    min-width: 200px;
     border-radius: 0.5em;
     border: grey solid;
     z-index: 999;
+    padding: 8px 0;
 
     .name{
         display: flex;
@@ -14,11 +17,11 @@
         .account-icon{
             color: #FFA629;
         }
-        
+
     }
 
     div{
-        margin: 15px;
+        margin: 10px 12px;
     }
     .menu{
         display: flex;
@@ -43,10 +46,23 @@
             background-color: #494646;
             opacity: 0.5;
             border-radius: 0.5em;
-            
+
         }
     }
-    
-    
 
+    @media (max-width: 768px) {
+        width: auto;
+        min-width: 200px;
+        right: 0.5em;
+
+        div {
+            margin: 8px 10px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        right: 0.5em;
+        left: auto;
+        min-width: 180px;
+    }
 }

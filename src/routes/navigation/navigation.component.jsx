@@ -52,7 +52,7 @@ const Navigation = ({token, setToken})=>{
                     {token?<AccountCircleIcon id="account-icon" style={{ fontSize: 30 ,color:activeColor==="account-icon" ? "white" : "#1e1e1e", cursor:"pointer"}} onClick={handleDropdown}/>:<Link id="signup" className="nav-link" to='/signup' style={{color:activeColor==="signup" ? "white" : "#1e1e1e"}} onFocus={handleFocus}>
                         SIGN UP
                 </Link>}
-                    {token && activeDropdown && <DropdownMenu token={token} setToken={setToken}/>}
+                    {token && activeDropdown && <DropdownMenu token={token} setToken={setToken} setActiveDropdown={setActiveDropdown}/>}
                </div>
         </div>
     </div>
