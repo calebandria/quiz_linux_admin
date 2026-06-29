@@ -10,8 +10,8 @@
     "@mui/icons-material": "^5.15.12",
     "@mui/material": "^5.15.13",
     "@supabase/supabase-js": "^2.39.8",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
     "react-hook-form": "^7.51.0",
     "react-router-dom": "^6.15.0"
   },
@@ -24,6 +24,6 @@
     "@vitejs/plugin-react": "^4.3.4",
     "sass": "^1.66.1",
     "vite": "^5.4.10",
-    "vite-plugin-svgr": "^5.2.0"
+    "vite-plugin-svgr": "^4.5.0"
   }
 }
