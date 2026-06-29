@@ -35,7 +35,6 @@ const LogIn = ({setToken})=>{
 
     return(
         <div className="login">
-            {<TypeWriter text="You will find more than you look for"/>}
             <form onSubmit={handleSubmit(onSubmit)} className='mail_login'>
                 <h3>LOG IN</h3>
                 <div>
@@ -93,6 +92,7 @@ const LogIn = ({setToken})=>{
 
                 <button id="submit" type="submit">CONNECT</button>
             </form>
+            {<TypeWriter text="You will find more than you look for"/>}
             
         </div>
     )
